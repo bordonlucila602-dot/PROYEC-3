@@ -1,2 +1,2 @@
-# PROYEC-3
+# PROYEC-3 Bordon Lucila
 Conectar GitHub con netlify
