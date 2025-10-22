@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Lucila Bordón</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo-container {
+            flex-shrink: 0;
+        }
+
+        .photo-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .photo-placeholder i {
+            font-size: 80px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .header-info h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header-info .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .section-title {
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #3498db;
+            font-size: 28px;
+        }
+
+        .item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .item:hover {
+            background: #e9ecef;
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .item-title {
+            font-size: 20px;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .item-subtitle {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .item-description {
+            color: #34495e;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .skill-item i {
+            font-size: 24px;
+        }
+
+        .languages {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .info-card strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .info-card span {
+            color: #34495e;
+            font-size: 15px;
+        }
+
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .hobby-item {
+            background: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            padding: 12px 25px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .hobby-item:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.6);
+        }
+
+        .download-btn i {
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-info h1 {
+                font-size: 32px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .download-btn {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="photo-container">
+                    <div class="photo-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="header-info">
+                    <h1>Lucila Bordón</h1>
+                    <div class="subtitle">Profesional en Trabajo Remoto</div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Eva Perón y Martín Fierro</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>3765127015</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Experiencia Profesional
+                </h2>
+                <div class="item">
+                    <div class="item-title">Trabajo Remoto</div>
+                    <div class="item-subtitle">Actualidad</div>
+                    <div class="item-description">Desarrollo de actividades profesionales en modalidad remota.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title">Cajera Local</div>
+                    <div class="item-subtitle">Experiencia Anterior</div>
+                    <div class="item-description">Atención al cliente, manejo de caja y operaciones comerciales.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Educación y Formación
+                </h2>
+                <div class="item">
+                    <div class="item-title">Recursos Digitales y Marketing</div>
+                    <div class="item-subtitle">Fundación Alfa - Estudiante</div>
+                    <div class="item-description">Formación en estrategias digitales, marketing y gestión de recursos online.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-certificate"></i>
+                    Otras Capacitaciones
+                </h2>
+                <div class="item">
+                    <div class="item-description">
+                        • Curso de Secretariado Administrativo<br>
+                        • Atención al Cliente<br>
+                        • Reposición de Autoservicio y Supermercado<br>
+                        • Auxiliar de Administración Contable
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i>
+                    Habilidades
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-utensils"></i>
+                        <span>Cocinar</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Resolución de Problemas</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-users"></i>
+                        <span>Trabajo en Equipo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-language"></i>
+                    Idiomas
+                </h2>
+                <div class="languages">
+                    <div class="language-item">Español - Nativo</div>
+                    <div class="language-item">Inglés - Básico</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    Información Adicional
+                </h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <strong>Disponibilidad Horaria:</strong>
+                        <span>Lunes a Viernes de 07:00 a 13:00</span>
+                    </div>
+                    <div class="info-card">
+                        <strong>Medio de Transporte:</strong>
+                        <span>No</span>
+                    </div>
+                    <div class="info-card">
+                        <strong>Disponibilidad de Radicación:</strong>
+                        <span>No</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-heart"></i>
+                    Hobbies e Intereses
+                </h2>
+                <div class="hobbies">
+                    <div class="hobby-item">Entrenar</div>
+                    <div class="hobby-item">Leer</div>
+                    <div class="hobby-item">Escuchar Música</div>
+                    <div class="hobby-item">Mirar Series</div>
+                </div>
+            </div>
+
+            <button class="download-btn" onclick="descargarPDF()">
+                <i class="fas fa-download"></i>
+                Descargar CV en PDF
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function descargarPDF() {
+            const elemento = document.querySelector('.container');
+            const boton = document.querySelector('.download-btn');
+            
+            boton.style.display = 'none';
+            
+            const opciones = {
+                margin: 10,
+                filename: 'CV_Lucila_Bordon.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opciones).from(elemento).save().then(() => {
+                boton.style.display = 'flex';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.item, .skill-item, .hobby-item');
+            items.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
